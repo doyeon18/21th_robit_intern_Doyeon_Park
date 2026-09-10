@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd"
+            schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>parkdoyeon_day2_hw2</name>
+  <version>0.0.0</version>
+  <description>ROS 2 Day2 Homework 2 - Qt turtlesim controller</description>
+  <maintainer email="brady180329@gmail.com">doyeon</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>turtlesim</depend>
+  <depend>std_srvs</depend>
+  <depend>qtbase5-dev</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
