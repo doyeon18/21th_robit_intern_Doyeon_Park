@@ -1,0 +1,6 @@
+turtle_drawer:
+  ros__parameters:
+    pen_r: 128
+    pen_g: 54
+    pen_b: 50
+    pen_width: 3
