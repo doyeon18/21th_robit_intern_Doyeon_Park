@@ -1,0 +1,6 @@
+bool new_maze
+uint8 difficulty
+---
+bool success
+uint32 seed
+string message

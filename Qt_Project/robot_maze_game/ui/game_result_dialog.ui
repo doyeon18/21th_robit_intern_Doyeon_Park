@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GameResultDialog</class>
+ <widget class="QDialog" name="GameResultDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>360</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>440</width>
+    <height>340</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>게임 결과</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    color: #e8f0f3;
+    background-color: #0b1115;
+    font-family: "Noto Sans CJK KR", "Noto Sans KR", sans-serif;
+}
+QLabel { color: #e8f0f3; }
+QLabel#resultBadgeLabel {
+    color: #63e9a5;
+    background-color: #10241b;
+    border: 1px solid #315448;
+    border-radius: 7px;
+    padding: 7px 14px;
+}
+QLabel#resultBadgeLabel[result="lost"] {
+    color: #ff7b84;
+    background-color: #2a1519;
+    border-color: #6b333a;
+}
+QLabel#resultMessageLabel, QLabel[role="caption"] { color: #8da0a8; }
+QFrame#statFrame {
+    background-color: #111b20;
+    border: 1px solid #293b43;
+    border-radius: 8px;
+}
+QPushButton {
+    min-height: 36px;
+    color: #dce7eb;
+    background-color: #1a282e;
+    border: 1px solid #344951;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-weight: 600;
+}
+QPushButton:hover { background-color: #23343b; border-color: #4c6872; }
+QPushButton:focus { border-color: #63e9a5; }
+QPushButton#retryButton {
+    color: #07130d;
+    background-color: #2de38b;
+    border-color: #2de38b;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing"><number>14</number></property>
+   <property name="leftMargin"><number>24</number></property>
+   <property name="topMargin"><number>24</number></property>
+   <property name="rightMargin"><number>24</number></property>
+   <property name="bottomMargin"><number>24</number></property>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="resultBadgeLabel">
+     <property name="font"><font><pointsize>9</pointsize><bold>true</bold></font></property>
+     <property name="text"><string>MISSION COMPLETE</string></property>
+     <property name="alignment"><set>Qt::AlignCenter</set></property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="resultTitleLabel">
+     <property name="font"><font><pointsize>20</pointsize><bold>true</bold></font></property>
+     <property name="text"><string>미로 탈출 성공</string></property>
+     <property name="alignment"><set>Qt::AlignCenter</set></property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="resultMessageLabel">
+     <property name="text"><string>열쇠를 모두 모으고 출구에 도착했습니다.</string></property>
+     <property name="alignment"><set>Qt::AlignCenter</set></property>
+     <property name="wordWrap"><bool>true</bool></property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="statFrame">
+     <layout class="QHBoxLayout" name="statLayout">
+      <property name="leftMargin"><number>18</number></property>
+      <property name="rightMargin"><number>18</number></property>
+      <item>
+       <layout class="QVBoxLayout" name="timeLayout">
+        <item><widget class="QLabel" name="timeCaptionLabel"><property name="text"><string>PLAY TIME</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="role" stdset="0"><string>caption</string></property></widget></item>
+        <item><widget class="QLabel" name="timeValueLabel"><property name="font"><font><pointsize>16</pointsize><bold>true</bold></font></property><property name="text"><string>00:00</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="scoreLayout">
+        <item><widget class="QLabel" name="scoreCaptionLabel"><property name="text"><string>SCORE</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="role" stdset="0"><string>caption</string></property></widget></item>
+        <item><widget class="QLabel" name="scoreValueLabel"><property name="font"><font><pointsize>16</pointsize><bold>true</bold></font></property><property name="text"><string>0</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonLayout">
+     <property name="spacing"><number>8</number></property>
+     <item><widget class="QPushButton" name="retryButton"><property name="text"><string>같은 미로 다시</string></property></widget></item>
+     <item><widget class="QPushButton" name="newMazeButton"><property name="text"><string>새 미로</string></property></widget></item>
+     <item><widget class="QPushButton" name="closeButton"><property name="text"><string>닫기</string></property></widget></item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

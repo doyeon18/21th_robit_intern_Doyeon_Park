@@ -1,0 +1,4 @@
+game_engine:
+  ros__parameters:
+    tick_ms: 100
+    initial_difficulty: 1
