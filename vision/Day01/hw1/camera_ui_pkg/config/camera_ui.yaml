@@ -1,0 +1,10 @@
+camera_node:
+  ros__parameters:
+    camera_index: 0
+    publish_hz: 30.0
+    image_topic: "/camera/image"
+
+ui_node:
+  ros__parameters:
+    display_hz: 30.0
+    image_topic: "/camera/image"
