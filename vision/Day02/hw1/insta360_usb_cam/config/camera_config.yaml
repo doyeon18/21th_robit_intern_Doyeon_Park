@@ -1,0 +1,32 @@
+/**:
+  ros__parameters:
+    viewer: true
+    camera_name: "camera1"
+    topic: "/camera/image_raw"
+    compressed_topic: "/camera/compressed_image"
+    device: "/dev/v4l/by-id/usb-Insta360_Insta360_Link-video-index0"
+    frame_id: "camera"
+    # Insta360 Link가 지원하며 원본 캘리브레이션과 종횡비가 같은 해상도다.
+    resolution: "1280x960"
+    debug_mode: false 
+    fps: 30.0
+    brightness: -1
+    contrast: -1
+    saturation: -1
+    hue: -1
+    gamma: -1
+    sharpness: -1
+    whitebalance: -1
+    auto_whitebalance: true
+    exposure: -1
+    auto_exposure: true
+    focus: -1
+    auto_focus: false
+    zoom: -1
+    # 자동 추적이 항상 알려진 기준각에서 시작하도록 중앙(0도)으로 정렬한다.
+    pan: 0
+    tilt: 0
+    rotate: -1
+    horizontal_flip: false
+    vertical_flip: false
+    output_resolution: "640x480"
