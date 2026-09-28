@@ -1,0 +1,5 @@
+# CPU용 torch/torchvision은 setup_yolo_environment.sh에서 별도 설치합니다.
+numpy==1.26.4
+opencv-python==4.11.0.86
+ultralytics==8.4.160
+setuptools>=68,<81

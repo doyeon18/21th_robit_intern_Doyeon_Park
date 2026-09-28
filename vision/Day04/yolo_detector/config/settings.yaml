@@ -1,0 +1,59 @@
+
+camera_node:
+  ros__parameters:
+    camera_source: "0"             # 카메라 번호 또는 테스트 동영상 경로
+    publish_hz: 30.0              # 발행 목표 주기 (실제 카메라 FPS와 다를 수 있음)
+    width: 640
+    height: 480
+    frame_id: "camera"
+    image_topic: "/camera/image_raw"
+
+detector_node:
+  ros__parameters:
+    model_path: ""                # 비우면 패키지에 포함한 yolo26n.pt 사용
+    device: "cpu"
+    cpu_threads: 8
+    image_size: 640
+    inference_hz: 30.0            # 처리 성능보다 높은 속도를 보장하지 않음
+    preview_hz: 30.0              # 화면은 최신 카메라 프레임으로 별도 갱신
+    max_box_age_ms: 250.0         # 오래된 탐지 박스는 미리보기에서 숨김
+    image_topic: "/camera/image_raw"
+    result_image_topic: "/yolo/image"
+    detections_topic: "/yolo/detections"
+    latency_topic: "/yolo/latency_ms"
+    confidence_threshold: 0.5
+    detect_all_classes: false
+    # false이면 아래 클래스만 선택. 원본 COCO category_id가 아닌 모델 인덱스.
+    class_ids: [0, 1, 2, 15, 16, 24, 25, 26, 32, 39, 41, 42, 43, 44, 45, 46, 47, 56, 57, 59, 60, 62, 63, 64, 66, 67, 73, 74, 76, 79]
+    class_names:
+      - "person"       # 0 사람
+      - "bicycle"      # 1 자전거
+      - "car"          # 2 자동차
+      - "cat"          # 15 고양이
+      - "dog"          # 16 개
+      - "backpack"     # 24 배낭
+      - "umbrella"     # 25 우산
+      - "handbag"      # 26 핸드백
+      - "sports ball"  # 32 공
+      - "bottle"       # 39 병
+      - "cup"          # 41 컵
+      - "fork"         # 42 포크
+      - "knife"        # 43 칼
+      - "spoon"        # 44 숟가락
+      - "bowl"         # 45 그릇
+      - "banana"       # 46 바나나
+      - "apple"        # 47 사과
+      - "chair"        # 56 의자
+      - "couch"        # 57 소파
+      - "bed"          # 59 침대
+      - "dining table" # 60 식탁
+      - "tv"           # 62 TV
+      - "laptop"       # 63 노트북
+      - "mouse"        # 64 마우스
+      - "keyboard"     # 66 키보드
+      - "cell phone"   # 67 휴대폰
+      - "book"         # 73 책
+      - "clock"        # 74 시계
+      - "scissors"     # 76 가위
+      - "toothbrush"   # 79 칫솔
+    show_window: true
