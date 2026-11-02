@@ -1,0 +1,8 @@
+# 실습에 사용한 직접 의존성 버전 (Ubuntu / Python 3.12.3)
+# CPU용 PyTorch 배포본을 찾기 위한 추가 인덱스
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0+cpu
+gymnasium[classic-control]==1.4.0
+numpy==2.5.4
+matplotlib==3.11.2
+pygame==2.6.1

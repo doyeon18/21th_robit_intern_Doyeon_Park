@@ -1,0 +1,62 @@
+[
+  {
+    "condition": "baseline",
+    "kind": "representative",
+    "evaluation_seed": 2011,
+    "checkpoint_steps": 1001472,
+    "steps": 95,
+    "return": 498.9558811634008,
+    "simulated_seconds": 1.425,
+    "playback_speed": 1,
+    "fps": 66.66666666666667,
+    "terminated": true,
+    "truncated": false,
+    "final_root_height": 0.9891432034853865,
+    "file": "results/comparison/baseline_representative_seed2011.mp4"
+  },
+  {
+    "condition": "baseline",
+    "kind": "lowest_return",
+    "evaluation_seed": 2013,
+    "checkpoint_steps": 1001472,
+    "steps": 63,
+    "return": 333.5869240465772,
+    "simulated_seconds": 0.945,
+    "playback_speed": 1,
+    "fps": 66.66666666666667,
+    "terminated": true,
+    "truncated": false,
+    "final_root_height": 0.9743678220989523,
+    "file": "results/comparison/baseline_lowest_return_seed2013.mp4"
+  },
+  {
+    "condition": "changed",
+    "kind": "representative",
+    "evaluation_seed": 2001,
+    "checkpoint_steps": 1001472,
+    "steps": 89,
+    "return": 459.6224579012372,
+    "simulated_seconds": 1.335,
+    "playback_speed": 1,
+    "fps": 66.66666666666667,
+    "terminated": true,
+    "truncated": false,
+    "final_root_height": 0.984141252717447,
+    "file": "results/comparison/changed_representative_seed2001.mp4"
+  },
+  {
+    "condition": "changed",
+    "kind": "lowest_return",
+    "evaluation_seed": 2006,
+    "checkpoint_steps": 1001472,
+    "steps": 66,
+    "return": 345.91636938363973,
+    "simulated_seconds": 0.99,
+    "playback_speed": 1,
+    "fps": 66.66666666666667,
+    "terminated": true,
+    "truncated": false,
+    "final_root_height": 0.9989946760598557,
+    "file": "results/comparison/changed_lowest_return_seed2006.mp4"
+  }
+]

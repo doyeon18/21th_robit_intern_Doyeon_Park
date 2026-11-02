@@ -1,4 +1,10 @@
 {
+  "is_slippery": false,
+  "training_episodes": 5000,
+  "alpha": 0.1,
+  "gamma": 0.95,
+  "training_seed": 0,
+  "evaluation_seed": 1000,
   "evaluation_episodes": 200,
   "wins": 200,
   "success_rate": 1.0,

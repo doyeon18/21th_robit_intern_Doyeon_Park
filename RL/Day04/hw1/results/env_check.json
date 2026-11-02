@@ -1,0 +1,357 @@
+{
+  "environment": "Humanoid-v5",
+  "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "versions": {
+    "gymnasium": "1.4.0",
+    "mujoco": "3.17.0",
+    "numpy": "2.5.4"
+  },
+  "seed": 0,
+  "policy": "random actions (no training)",
+  "observation_shape": [
+    348
+  ],
+  "action_shape": [
+    17
+  ],
+  "action_low": [
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645,
+    -0.4000000059604645
+  ],
+  "action_high": [
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645
+  ],
+  "simulation_seconds_per_step": 0.015,
+  "max_episode_steps": 1000,
+  "actuator_names": [
+    "abdomen_y",
+    "abdomen_z",
+    "abdomen_x",
+    "right_hip_x",
+    "right_hip_z",
+    "right_hip_y",
+    "right_knee",
+    "left_hip_x",
+    "left_hip_z",
+    "left_hip_y",
+    "left_knee",
+    "right_shoulder1",
+    "right_shoulder2",
+    "right_elbow",
+    "left_shoulder1",
+    "left_shoulder2",
+    "left_elbow"
+  ],
+  "first_step": {
+    "reward": 4.873016175079719,
+    "terminated": false,
+    "truncated": false,
+    "info": {
+      "x_position": -0.0014758070406595742,
+      "y_position": -0.00502476939047456,
+      "tendon_length": [
+        -0.08536772274651941,
+        -0.09079587131365834
+      ],
+      "tendon_velocity": [
+        -8.698986139480228,
+        -8.217568600124814
+      ],
+      "distance_from_origin": 0.005237013829341149,
+      "x_velocity": 0.001944280074065811,
+      "y_velocity": 0.000192748634997413,
+      "reward_survive": 5.0,
+      "reward_forward": 0.002430350092582264,
+      "reward_ctrl": -0.12941417501286276,
+      "reward_contact": -0.0
+    }
+  },
+  "completed_episodes": [
+    {
+      "steps": 21,
+      "return": 98.79087206341109,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 20,
+      "return": 95.83897244634912,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 17,
+      "return": 78.63713026733303,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 17,
+      "return": 78.19622378034562,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 24,
+      "return": 108.45662635539973,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 25,
+      "return": 112.64038614907513,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 20,
+      "return": 94.05324385595401,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 17,
+      "return": 77.85670560255176,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 23,
+      "return": 112.30104740717718,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 18,
+      "return": 83.22666990827737,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 19,
+      "return": 88.90130262401289,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 18,
+      "return": 83.37462741188594,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 35,
+      "return": 166.5989287514762,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 19,
+      "return": 84.12592184774985,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 20,
+      "return": 92.13730975335618,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 34,
+      "return": 147.43662293693933,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 20,
+      "return": 93.50905956750873,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 22,
+      "return": 101.61486856394605,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 18,
+      "return": 83.70707541330118,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 21,
+      "return": 99.75931697072203,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 24,
+      "return": 111.06854871957661,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 25,
+      "return": 119.66610487027087,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 23,
+      "return": 105.9257639038682,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 37,
+      "return": 169.74291419036788,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 20,
+      "return": 92.03266052458002,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 22,
+      "return": 102.86674470429527,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 26,
+      "return": 122.31940699653957,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 27,
+      "return": 126.16451016215342,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 26,
+      "return": 122.4851865272859,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 22,
+      "return": 105.4281571428324,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 41,
+      "return": 198.0381422869867,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 25,
+      "return": 122.47210814023747,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 29,
+      "return": 135.89228930213153,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 30,
+      "return": 139.833905500438,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 32,
+      "return": 152.21340789910295,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 30,
+      "return": 135.0695801455712,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 18,
+      "return": 83.32469966576554,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 17,
+      "return": 78.4659686705695,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 19,
+      "return": 89.20716748469029,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 18,
+      "return": 83.51166025635906,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 28,
+      "return": 133.43501731492145,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "steps": 31,
+      "return": 145.99633738968294,
+      "terminated": true,
+      "truncated": false
+    }
+  ],
+  "total_steps": 1000,
+  "unfinished_episode_steps": 2,
+  "elapsed_seconds": 0.3164396790000126
+}

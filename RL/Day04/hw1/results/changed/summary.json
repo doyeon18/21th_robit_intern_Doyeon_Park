@@ -1,0 +1,53 @@
+{
+  "purpose": "comparison experiment",
+  "config": {
+    "name": "changed_lr0.0001",
+    "env_id": "Humanoid-v5",
+    "learning_rate": 0.0001,
+    "total_timesteps": 1001472,
+    "seed": 0,
+    "threads": 1,
+    "evaluation_episodes": 20,
+    "evaluation_seed_start": 2000
+  },
+  "actual_steps": 1001472,
+  "training_seconds": 1366.291420464,
+  "steps_per_second": 732.9856464003079,
+  "versions": {
+    "gymnasium": "1.4.0",
+    "mujoco": "3.17.0",
+    "torch": "2.15.0+cpu",
+    "stable-baselines3": "2.9.2",
+    "numpy": "2.5.4"
+  },
+  "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "device": "cpu",
+  "reload_actions_identical": true,
+  "evaluation_count": 20,
+  "deterministic": true,
+  "metrics": {
+    "return": {
+      "mean": 479.9592135120256,
+      "std": 86.68715775076312
+    },
+    "steps": {
+      "mean": 94.0,
+      "std": 18.29207478663916
+    },
+    "simulated_seconds": {
+      "mean": 1.41,
+      "std": 0.27438112179958735
+    },
+    "mean_forward_velocity": {
+      "mean": 0.4156217330673364,
+      "std": 0.12430018496952823
+    },
+    "mean_squared_action": {
+      "mean": 0.12545437283070596,
+      "std": 0.0016099582838046548
+    }
+  },
+  "terminated_count": 20,
+  "truncated_count": 0,
+  "limitations": "One training seed. Evaluation std describes episodes, not variability across retraining."
+}

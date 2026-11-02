@@ -1,0 +1,10 @@
+{
+  "name": "baseline_lr0.0003",
+  "env_id": "Humanoid-v5",
+  "learning_rate": 0.0003,
+  "total_timesteps": 1001472,
+  "seed": 0,
+  "threads": 1,
+  "evaluation_episodes": 20,
+  "evaluation_seed_start": 2000
+}

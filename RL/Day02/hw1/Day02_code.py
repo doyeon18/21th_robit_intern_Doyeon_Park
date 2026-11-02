@@ -1,5 +1,6 @@
 ''' 환경과 Q-table 준비 '''
 
+import argparse
 import json
 from pathlib import Path
 
@@ -10,8 +11,19 @@ import numpy as np
 matplotlib.use("Agg")  # Save graphs without opening a separate window.
 import matplotlib.pyplot as plt
 
-env = gym.make("FrozenLake-v1", map_name="4x4", is_slippery=False) 
-# FrozenLake환경 선택, 4 X 4 크기의 맵, 미끄러짐 = 끔 -> env변수에 저장 
+# 기본 실행은 기존 환경, --slippery를 붙이면 미끄러운 환경을 별도로 학습.
+parser = argparse.ArgumentParser(description="FrozenLake Q-learning")
+parser.add_argument("--slippery", action="store_true", help="미끄러짐 활성화")
+parser.add_argument("--no-demo", action="store_true", help="시연 창 없이 학습과 평가만 실행")
+args = parser.parse_args()
+slippery = args.slippery
+result_folder = "slippery_results" if slippery else "non_slippery_results"
+output_dir = Path(__file__).resolve().parent / result_folder
+output_dir.mkdir(parents=True, exist_ok=True)
+print(f"실험 설정: is_slippery={slippery}, 학습 5000판, 평가 200판")
+
+env = gym.make("FrozenLake-v1", map_name="4x4", is_slippery=slippery) 
+# FrozenLake 4x4 환경. 미끄러짐은 실행 옵션에 따라 설정 
 map_desc = env.unwrapped.desc.copy() # 시각화에 사용할 맵 정보 보관
 rng = np.random.default_rng(0) # 난수 seed 설정
 Q = np.zeros((env.observation_space.n, env.action_space.n)) 
@@ -56,13 +68,13 @@ for episode in range(5000): # 5000판 진행
             break # 목표 도착, 구멍 진입, 시간 제한 중 하나가 발생하면 break가 실행
     returns.append(total) # 끝난 판에 보상합계 저장
 
-q_path = Path(__file__).resolve().parent / "q_table.npy"
+q_path = output_dir / "q_table.npy"
 np.save(q_path, Q) # 파일로 저장 
 
 ''' 학습과 평가의 분리 '''
 
 Q = np.load(q_path) # 불러오기 
-eval_env = gym.make("FrozenLake-v1", is_slippery=False) # 평가용 환경 만들기 
+eval_env = gym.make("FrozenLake-v1", is_slippery=slippery) # 평가용 환경 만들기 
 eval_rng = np.random.default_rng(1000) # 평가용 난수생성기 만들기 
 wins = 0 # 성공 횟수 초기화
 success_lengths = [] # 성공한 판의 행동 횟수만 저장
@@ -83,6 +95,12 @@ for ep in range(200): # 200판 평가 시작
 
 # 평가 결과(Metrics)를 저장할 딕셔너리 생성
 evaluation_results = {
+    "is_slippery": slippery,
+    "training_episodes": 5000,
+    "alpha": alpha,
+    "gamma": gamma,
+    "training_seed": 0,
+    "evaluation_seed": 1000,
     "evaluation_episodes": 200,  # 총 평가 진행 횟수 (테스트 에피소드 수)
     "wins": wins,                # 성공(목표 지점 도달)한 총 횟수
     "success_rate": wins / 200,  # 최종 성공률 (0.0 ~ 1.0)
@@ -111,7 +129,7 @@ else:
 
 # JSON 파일 저장 및 마무리 환경 정리
 # 현재 스크립트 파일과 동일한 디렉토리에 'evaluation_results.json' 파일 경로 설정
-result_path = Path(__file__).resolve().parent / "evaluation_results.json"
+result_path = output_dir / "evaluation_results.json"
 
 # json.dumps를 통해 딕셔너리를 문자열로 변환 후 파일에 기록
 # ensure_ascii=False: 한글이나 특수문자가 \uXXXX 형태로 깨지지 않고 그대로 저장되도록 설정
@@ -171,7 +189,7 @@ for ax in axes:
     ax.grid(alpha=0.3) 
 
 # 그래프 전체의 메인 타이틀 설정 (사용한 환경 정보 및 하이퍼파라미터 기록)
-fig.suptitle(f"FrozenLake | slippery=False | alpha={alpha} | gamma={gamma} | seed=0") 
+fig.suptitle(f"FrozenLake | slippery={slippery} | alpha={alpha} | gamma={gamma} | seed=0") 
 
 # 각 서브플롯과 타이틀 간의 간격을 자동으로 최적화하여 글자가 겹치지 않게 함
 fig.tight_layout() 
@@ -179,7 +197,7 @@ fig.tight_layout()
 
 # 이미지 파일 저장 및 마무리
 # 현재 실행 중인 스크립트 파일과 동일한 디렉토리에 'training_results.png' 저장 경로 설정
-graph_path = Path(__file__).resolve().parent / "training_results.png" 
+graph_path = output_dir / "training_results.png" 
 
 # 설정한 경로에 고해상도(dpi=180) 이미지 파일로 그래프 저장
 fig.savefig(graph_path, dpi=180) 
@@ -192,7 +210,6 @@ print(f"Training graph saved: {graph_path}")
 
 
 # Q-table heatmap: 행은 상태, 열은 행동, 숫자와 색은 학습된 Q값.
-output_dir = Path(__file__).resolve().parent
 map_cells = map_desc.astype("U1").ravel()
 fig, ax = plt.subplots(figsize=(7, 9))
 image = ax.imshow(Q, cmap="viridis", vmin=0, vmax=max(1.0, float(Q.max())), aspect="auto")
@@ -200,7 +217,7 @@ ax.set_xticks(range(4), ["0: Left", "1: Down", "2: Right", "3: Up"])
 ax.set_yticks(range(len(Q)), [f"{s}: {cell}" for s, cell in enumerate(map_cells)])
 ax.set_xlabel("Action")
 ax.set_ylabel("State: map cell")
-ax.set_title("Learned Q-table | FrozenLake 4x4")
+ax.set_title(f"Learned Q-table | slippery={slippery}")
 for state_index in range(Q.shape[0]):
     for action_index in range(Q.shape[1]):
         value = Q[state_index, action_index]
@@ -246,7 +263,7 @@ ax.set_xlim(0, cols)
 ax.set_ylim(rows, 0)
 ax.set_aspect("equal")
 ax.axis("off")
-ax.set_title("Greedy policy | FrozenLake 4x4", pad=16)
+ax.set_title(f"Greedy policy | slippery={slippery}", pad=16)
 fig.text(0.5, 0.07, "S: start   H: hole   G: goal\nAll tied best actions are shown; evaluation chooses among them randomly.\nOrange: all Q-values are zero; inspect learning coverage.",
          ha="center", va="center", fontsize=9)
 fig.tight_layout(rect=(0, 0.12, 1, 1))
@@ -254,3 +271,28 @@ policy_path = output_dir / "policy_grid.png"
 fig.savefig(policy_path, dpi=180)
 plt.close(fig)
 print(f"Policy grid saved: {policy_path}")
+
+# 학습한 정책을 화면으로 시연
+if not args.no_demo:
+    demo_env = gym.make(
+        "FrozenLake-v1",
+        map_name="4x4",
+        is_slippery=slippery,
+        render_mode="human",
+    )
+    demo_rng = np.random.default_rng(2000)
+    state, _ = demo_env.reset(seed=2000)
+
+    try:
+        while True:
+            action = choose_action(state, 0.0, demo_rng)
+            state, reward, terminated, truncated, _ = demo_env.step(action)
+
+            if terminated or truncated:
+                break
+
+        # 종료 화면을 2초간 유지
+        import time
+        time.sleep(2)
+    finally:
+        demo_env.close()
